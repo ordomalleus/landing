@@ -1,3 +1,4 @@
+// https://www.youtube.com/watch?v=-WRjUQG4huA
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var ExtractTextPlugin = require("extract-text-webpack-plugin");
 var path = require('path');
@@ -18,7 +19,8 @@ var cssConfig = isProduction ? cssProd : cssDev;
 
 module.exports = {
     entry: {
-        app: './src/js/app.js'
+        app: ['babel-polyfill', './src/js/app.js'],
+        ts: ['./src/ts/index.ts']
     },
     output: {
         path: path.resolve(__dirname, 'dist'),
@@ -30,6 +32,11 @@ module.exports = {
                 test: /\.js$/,
                 exclude: /node_modules/,
                 loader: "babel-loader"
+            },
+            {
+                test: /\.tsx?$/,
+                exclude: /node_modules/,
+                use: 'ts-loader'
             },
             {
                 test: /\.pug$/,
