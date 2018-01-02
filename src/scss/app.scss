@@ -1,6 +1,8 @@
-$foo: 14px;
-$bar: #ffff09;
-
-body {
-  background: $bar;
-}
+// Переопределенные константы bootstrap
+@import "varibles-bootsrup";
+// Стили bootstrap
+@import "libs/bootstrap/bootstrap";
+// Кастомные переменные
+@import "varibles";
+// SCSS стили
+@import "custom";
