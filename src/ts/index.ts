@@ -16,7 +16,20 @@ export class Test {
     public getModel(): IModelTest {
         return this.model;
     }
+
+    public p() {
+        return new Promise((resolve, reject) => {
+            setTimeout(() => {
+                resolve('async TS');
+            }, 1000)
+        })
+    }
+
+    public async getTest() {
+        const f = await this.p();
+        console.log(f);
+    }
 }
 
 const test = new Test();
-console.log(test.getModel());
+test.getTest();
